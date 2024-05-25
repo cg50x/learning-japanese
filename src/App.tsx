@@ -12,11 +12,7 @@ function App() {
 
   const [faceEmotion, setFaceEmotion] = useState<"happy" | "sad">("happy");
 
-  const onClickBlueButton = () => {
-    console.log("BLUE button clicked");
-    if (condition !== "青いボタンを押す") {
-      return;
-    }
+  function performResult() {
     if (result === "顔がうれしくなる") {
       setFaceEmotion("happy");
     } else if (result === "顔がかなしくなる") {
@@ -26,6 +22,14 @@ function App() {
     } else if (result === "電気を消す") {
       setLightIsOn(false);
     }
+  }
+
+  const onClickBlueButton = () => {
+    console.log("BLUE button clicked");
+    if (condition !== "青いボタンを押す") {
+      return;
+    }
+    performResult();
   };
 
   const [lightIsOn, setLightIsOn] = useState<boolean>(true);
@@ -34,15 +38,7 @@ function App() {
     if (condition !== "赤いボタンを押す") {
       return;
     }
-    if (result === "顔がうれしくなる") {
-      setFaceEmotion("happy");
-    } else if (result === "顔がかなしくなる") {
-      setFaceEmotion("sad");
-    } else if (result === "電気をつける") {
-      setLightIsOn(true);
-    } else if (result === "電気を消す") {
-      setLightIsOn(false);
-    }
+    performResult();
   };
 
   return (
