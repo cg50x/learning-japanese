@@ -1,25 +1,22 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import lightbulbOff from "./assets/bulb.png";
 import lightbulbOn from "./assets/bulb-on.png";
 import "./App.css";
 
 function App() {
   const [condition, setCondition] = useState<string>("青いボタンを押す");
-
   const [result, setResult] = useState<string>("顔がうれしくなる");
-
   const [faceEmotion, setFaceEmotion] = useState<"happy" | "sad">("happy");
+  const [lightIsOn, setLightIsOn] = useState<boolean>(true);
 
   function performResult() {
     if (result === "顔がうれしくなる") {
       setFaceEmotion("happy");
     } else if (result === "顔がかなしくなる") {
       setFaceEmotion("sad");
-    } else if (result === "電気をつける") {
+    } else if (result === "電気がつく") {
       setLightIsOn(true);
-    } else if (result === "電気を消す") {
+    } else if (result === "電気が消える") {
       setLightIsOn(false);
     }
   }
@@ -31,8 +28,6 @@ function App() {
     }
     performResult();
   };
-
-  const [lightIsOn, setLightIsOn] = useState<boolean>(true);
   const onClickRedButton = () => {
     console.log("RED button clicked");
     if (condition !== "赤いボタンを押す") {
@@ -56,7 +51,6 @@ function App() {
         )}
       </div>
       <div>
-        {/* TODO: Turn these into actual buttons and style them  */}
         <button className="emoji button" onClick={onClickBlueButton}>
           🔵
         </button>
@@ -98,10 +92,11 @@ function App() {
         >
           <option>顔がうれしくなる</option>
           <option>顔がかなしくなる</option>
-          <option>電気をつける</option>
-          <option>電気を消す</option>
+          <option>電気がつく</option>
+          <option>電気が消える</option>
         </select>
       </div>
+      <div></div>
     </>
   );
 }
